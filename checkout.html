@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Fashion | Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">MEN'S FASHION</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="search-btn"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
+                <a href="#" class="user-btn"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="checkout-section">
+            <div class="checkout-container">
+                <div class="checkout-steps">
+                    <div class="step active">
+                        <span>1</span>
+                        <p>Shipping</p>
+                    </div>
+                    <div class="step">
+                        <span>2</span>
+                        <p>Payment</p>
+                    </div>
+                    <div class="step">
+                        <span>3</span>
+                        <p>Confirmation</p>
+                    </div>
+                </div>
+                
+                <div class="checkout-content">
+                    <div class="shipping-form">
+                        <h2>Shipping Information</h2>
+                        <form id="checkout-form">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group-row">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <select id="country" required>
+                                        <option value="">Select Country</option>
+                                        <option value="US">United States</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="CA">Canada</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP Code</label>
+                                    <input type="text" id="zip" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="save-info">
+                                <label for="save-info">Save this information for next time</label>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h2>Your Order</h2>
+                        <div class="order-items">
+                            <!-- Order items will be loaded from JavaScript -->
+                        </div>
+                        <div class="order-totals">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span class="subtotal">$0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span class="shipping">Free</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span class="total-price">$0.00</span>
+                            </div>
+                        </div>
+                        <button type="submit" form="checkout-form" class="btn place-order-btn">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#">Store Locations</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Men's Fashion. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Load order summary when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            displayOrderSummary();
+            
+            // Form submission
+            const checkoutForm = document.getElementById('checkout-form');
+            checkoutForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real application, you would process the payment here
+                // For this demo, we'll just show a confirmation
+                alert('Order placed successfully! Thank you for your purchase.');
+                clearCart();
+                updateCartCount();
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>
